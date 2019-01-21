@@ -9,3 +9,11 @@ publish:
 
 lint:
 	npx eslint .
+
+test:
+	npm test
+
+test-watch:
+	npm test -- --watch
+
+.PHONY: test
