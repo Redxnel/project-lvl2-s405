@@ -1,4 +1,4 @@
-import genDiff from '../src/genDiff';
+import genDiff from '../src';
 
 test('gendiff', () => {
   const diff = genDiff('__tests__/__fixtures__/before.json', '__tests__/__fixtures__/after.json');
