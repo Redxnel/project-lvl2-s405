@@ -1,8 +1,11 @@
 #!/usr/bin/env node
+import version from '../../package.json';
 
-const selectFlag = require('commander');
+const program = require('commander');
 
-selectFlag
-  .command('gendiff [options] <firstConfig> <secondConfig>')
+program
+  .version(version)
+  .command('gendiff <firstConfig> <secondConfig>')
   .description('Compares two configuration files and shows a difference.')
-  .option("-f, --format [type]", "Which type of result to use")
+  .option('-f, --format [type]', 'Which type of format to use')
+  .parse(process.argv);
