@@ -4,4 +4,4 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/bf959a90a4ffc4f420e6/maintainability)](https://codeclimate.com/github/Redxnel/project-lvl2-s405/maintainability)
 
-[![asciicast](https://asciinema.org/a/FbbhywMzuibjKPUScnBLR6OX9.svg)](https://asciinema.org/a/FbbhywMzuibjKPUScnBLR6OX9)
+[![asciicast](https://asciinema.org/a/Vhtc3B2KNVZB1jFTh7LRwlnXd.svg)](https://asciinema.org/a/Vhtc3B2KNVZB1jFTh7LRwlnXd)
