@@ -1,6 +1,6 @@
 {
   "name": "generate_diff",
-  "version": "0.0.10",
+  "version": "0.0.14",
   "description": "gendiff",
   "main": "index.js",
   "bin": {
