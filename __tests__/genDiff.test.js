@@ -1,16 +1,18 @@
+import fs from 'fs';
 import genDiff from '../src';
 
-test('gendiff', () => {
+test('.jsonDiff', () => {
   const diff = genDiff('__tests__/__fixtures__/before.json', '__tests__/__fixtures__/after.json');
 
-  const expected = {
-    '  host': 'hexlet.io',
-    '+ timeout': 20,
-    '- timeout': 50,
-    '- proxy': '123.234.53.22',
-    '- follow': false,
-    '+ verbose': true,
-  };
+  const expected = fs.readFileSync('__tests__/__fixtures__/result.txt', 'utf-8');
 
-  expect(diff).toEqual(expected);
+  expect(diff).toBe(expected);
+});
+
+test('.ymlDiff', () => {
+  const diff = genDiff('__tests__/__fixtures__/before.yml', '__tests__/__fixtures__/after.yml');
+
+  const expected = fs.readFileSync('__tests__/__fixtures__/result.txt', 'utf-8');
+
+  expect(diff).toBe(expected);
 });
