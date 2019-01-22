@@ -1,4 +1,4 @@
-# Вычислитель отличий
+# Вычислитель отличий by Redxnel
 
 [![Build Status](https://travis-ci.org/Redxnel/project-lvl2-s405.svg?branch=master)](https://travis-ci.org/Redxnel/project-lvl2-s405)
 
@@ -8,6 +8,10 @@
 npm install -g generate_diff
 
 [![asciicast](https://asciinema.org/a/6FwtFMMKLquZpZC8ULVdWi47m.svg)](https://asciinema.org/a/6FwtFMMKLquZpZC8ULVdWi47m)
+
+## Описание
+
+**Вычислитель отличий** - это утилита, которая демонстрирует отличие двух файлов. Отуствие плюса или минуса в выводе говорит о том, что данная строчка не была изменена. Плюс обозначет добавление нового свойства или значения. Минус - удаление свойства или значения. Поддерживаемый формат файлов: JSON, yaml, INI.
 
 ### Вычисление отличий файлов с расширением .json
 [![asciicast](https://asciinema.org/a/dfowTWYJBRLq6yymtCvYX50XG.svg)](https://asciinema.org/a/dfowTWYJBRLq6yymtCvYX50XG)

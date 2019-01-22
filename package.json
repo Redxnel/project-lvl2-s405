@@ -1,7 +1,7 @@
 {
   "name": "generate_diff",
-  "version": "0.1.21",
-  "description": "gendiff",
+  "version": "0.1.23",
+  "description": "The training project",
   "main": "index.js",
   "bin": {
     "gendiff": "dist/bin/gendiff.js"
@@ -49,5 +49,10 @@
     "ini": "^1.3.5",
     "js-yaml": "^3.12.1",
     "lodash": "^4.17.11"
-  }
+  },
+  "keywords": [
+    "gendiff",
+    "difference",
+    "utility"
+  ]
 }
