@@ -1,14 +1,10 @@
-import fs from 'fs';
-import path from 'path';
 import yaml from 'js-yaml';
+import ini from 'ini';
 
-const format = {
-  '.json': configPath => JSON.parse(configPath),
-  '.yml': configPath => yaml.safeLoad(configPath),
+const parsers = {
+  '.json': JSON.parse,
+  '.yml': yaml.safeLoad,
+  '.ini': ini.parse,
 };
 
-export default (configPath) => {
-  const data = fs.readFileSync(configPath, 'utf-8');
-  const ext = path.extname(configPath);
-  return format[ext](data);
-};
+export default (format, data) => parsers[format](data);
