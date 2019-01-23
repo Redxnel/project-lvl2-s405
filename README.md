@@ -7,14 +7,14 @@
 ## Установка пакета
 npm install -g generate_diff
 
-[![asciicast](https://asciinema.org/a/6FwtFMMKLquZpZC8ULVdWi47m.svg)](https://asciinema.org/a/6FwtFMMKLquZpZC8ULVdWi47m)
+[![asciicast](https://asciinema.org/a/FSXo51M0btGyOGk8EJRZrUjok.svg)](https://asciinema.org/a/FSXo51M0btGyOGk8EJRZrUjok)
 
 ## Описание
 
-**Вычислитель отличий** - это утилита, которая демонстрирует отличие двух файлов. Отуствие плюса или минуса в выводе говорит о том, что данная строчка не была изменена. Плюс обозначет добавление нового свойства или значения. Минус - удаление свойства или значения. Поддерживаемый формат файлов: JSON, yaml, INI.
+**Вычислитель отличий** - это утилита, которая демонстрирует отличие двух конфигурационных файлов,  в том числе со сложной внутренней структурой. Отуствие плюса или минуса в выводе говорит о том, что данная строчка не была изменена. Плюс обозначет добавление нового свойства или значения. Минус - удаление свойства или значения. Поддерживаемый формат файлов: JSON, yaml, INI.
 
 ### Вычисление отличий файлов с расширением .json
-[![asciicast](https://asciinema.org/a/dfowTWYJBRLq6yymtCvYX50XG.svg)](https://asciinema.org/a/dfowTWYJBRLq6yymtCvYX50XG)
+[![asciicast](https://asciinema.org/a/3BnLZpLfm3EZiSflLFe81BvIw.svg)](https://asciinema.org/a/3BnLZpLfm3EZiSflLFe81BvIw)
 
 ### Вычисление отличий файлов с расширением .yml
 [![asciicast](https://asciinema.org/a/lXNvm5qRzXeqf9xxBZp5iBMeG.svg)](https://asciinema.org/a/lXNvm5qRzXeqf9xxBZp5iBMeG)
