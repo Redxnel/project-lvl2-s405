@@ -5,32 +5,31 @@ const levelUp = 1;
 const getSpace = level => '    '.repeat(level);
 
 const stringify = (value, level) => {
-  const newLine = '\n';
   if (value instanceof Object) {
     const result = Object.keys(value)
-      .map(key => [`${newLine}${getSpace(level + levelUp)}${key}: ${value[key]}`]);
+      .map(key => [`\n${getSpace(level + levelUp)}${key}: ${value[key]}`]);
     return `{${_.flatten(result).join('')}\n${getSpace(level)}}`;
   }
   return value;
 };
 
+const toString = (newLine, space, operation, name, value, level, func) => `${newLine}${space}${operation}${name}: ${func(value, level + levelUp)}`;
+
+const operations = new Map([
+  ['added', '+ '],
+  ['deleted', '- '],
+  ['unchanged', '  '],
+]);
+
 const render = (ast, level = 0) => {
   const space = '    '.repeat(level);
   const newLine = '\n  ';
   const result = ast.map((node) => {
-    switch (node.type) {
-      case 'added':
-        return [`${newLine}${space}+ ${node.name}: ${stringify(node.valueAfter, level + levelUp)}`];
-      case 'deleted':
-        return [`${newLine}${space}- ${node.name}: ${stringify(node.valueBefore, level + levelUp)}`];
-      case 'changed':
-        return [`${newLine}${space}+ ${node.name}: ${stringify(node.valueAfter, level + levelUp)}`,
-          `${newLine}${space}- ${node.name}: ${stringify(node.valueBefore, level + levelUp)}`];
-      case 'unchanged':
-        return [`${newLine}${space}  ${node.name}: ${stringify(node.valueBefore, level + levelUp)}`];
-      default:
-        return [`${newLine}${space}  ${node.name}: ${render(node.children, level + levelUp)}`];
+    const operation = operations.get(node.type);
+    if (node.children) {
+      return [toString(newLine, space, operation, node.name, node.children, level, render)];
     }
+    return [toString(newLine, space, operation, node.name, node.value, level, stringify)];
   });
 
   return `{${_.flatten(result).join('')}\n${space}}`;
