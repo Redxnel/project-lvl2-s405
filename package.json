@@ -1,6 +1,6 @@
 {
   "name": "generate_diff",
-  "version": "0.2.24",
+  "version": "0.2.25",
   "description": "The training project",
   "main": "index.js",
   "bin": {
