@@ -1,26 +1,19 @@
-import Added from '../tools/Added';
-import Updated from '../tools/Updated';
-import Removed from '../tools/Removed';
-import Nested from '../tools/Nested';
 import { selectValue } from '../utils';
 
 const render = (ast, name = '') => {
   const result = ast.reduce((acc, node) => {
+    const path = name.length === 0 ? node.name : `${name}.${node.name}`;
     if (node.type === 'added') {
-      const added = new Added(node.name, node.value, selectValue);
-      return [...acc, added.toPLain(name)];
+      return [...acc, `Property '${path}' was added with value: ${selectValue(node.value)}`];
     }
     if (node.type === 'updated') {
-      const updated = new Updated(node.name, node.value, selectValue);
-      return [...acc, updated.toPLain(name)];
+      return [...acc, `Property '${path}' was updated. From ${selectValue(node.value.valueBefore)} to ${selectValue(node.value.valueAfter)}`];
     }
     if (node.type === 'removed') {
-      const removed = new Removed(node.name, node.value);
-      return [...acc, removed.toPLain(name)];
+      return [...acc, `Property '${path}' was removed`];
     }
     if (node.type === 'nested') {
-      const nested = new Nested(node.name, node.children, render);
-      return [...acc, nested.toGetDepth(name)];
+      return [...acc, render(node.children, path)];
     }
     return acc;
   }, []);
