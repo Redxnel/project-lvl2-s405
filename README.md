@@ -14,7 +14,7 @@ npm install -g generate_diff
 **Вычислитель отличий** - это утилита, которая демонстрирует отличие двух конфигурационных файлов,  в том числе со сложной внутренней структурой. Отуствие плюса или минуса в выводе говорит о том, что данная строчка не была изменена. Плюс обозначет добавление нового свойства или значения. Минус - удаление свойства или значения. Поддерживаемый формат файлов: JSON, yaml, INI.
 
 ### Вычисление отличий файлов с расширением .json
-[![asciicast](https://asciinema.org/a/3BnLZpLfm3EZiSflLFe81BvIw.svg)](https://asciinema.org/a/3BnLZpLfm3EZiSflLFe81BvIw)
+[![asciicast](https://asciinema.org/a/G36UF0TdchuNZVIokT85QESiT.svg)](https://asciinema.org/a/G36UF0TdchuNZVIokT85QESiT)
 
 ### Вычисление отличий файлов с расширением .yml
 [![asciicast](https://asciinema.org/a/lXNvm5qRzXeqf9xxBZp5iBMeG.svg)](https://asciinema.org/a/lXNvm5qRzXeqf9xxBZp5iBMeG)

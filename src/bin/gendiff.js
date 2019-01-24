@@ -9,6 +9,6 @@ program
   .version(info.version)
   .option('-f, --format [type]', 'Which type of format to use')
   .action((firstConfig, secondConfig) => {
-    console.log(genDiff(firstConfig, secondConfig));
+    console.log(genDiff(firstConfig, secondConfig, program.format));
   })
   .parse(process.argv);
