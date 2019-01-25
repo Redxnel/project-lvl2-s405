@@ -3,7 +3,10 @@ import { stringify } from '../utils';
 
 const levelUp = 1;
 
-const toString = (space, operation, name, value, level, func) => `\n  ${space}${operation}${name}: ${func(value, level + levelUp)}`;
+const toString = (space, operation, name, value, level, func) => {
+  const argument = value instanceof Object ? func(value, level + levelUp) : value;
+  return `\n  ${space}${operation}${name}: ${argument}`;
+};
 
 const operations = new Map([
   ['added', '+ '],
