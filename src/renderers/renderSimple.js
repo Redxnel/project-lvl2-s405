@@ -1,13 +1,10 @@
-import _ from 'lodash';
-
 const depthUp = 1;
 
 const getSpaces = depth => '    '.repeat(depth);
 
 const stringify = (value, depth) => {
   if (value instanceof Object) {
-    return `{${Object
-      .keys(value)
+    return `{${Object.keys(value)
       .map(key => `\n${getSpaces(depth + depthUp)}${key}: ${value[key]}`)
       .join('')}\n${getSpaces(depth)}}`;
   }

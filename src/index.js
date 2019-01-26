@@ -4,7 +4,7 @@ import parse from './parsers';
 import render from './renderers/index';
 import buildDiffAST from './buildAST';
 
-const genDiff = (path1, path2, format = 'default') => {
+export default (path1, path2, format = 'default') => {
   const pathFormat1 = path.extname(path1);
   const pathFormat2 = path.extname(path2);
 
@@ -15,5 +15,3 @@ const genDiff = (path1, path2, format = 'default') => {
 
   return render(diffAST, format);
 };
-
-export default genDiff;
