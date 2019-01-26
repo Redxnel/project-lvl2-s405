@@ -19,7 +19,7 @@ const buildDiffAST = (data1, data2) => {
       case data1[key] !== data2[key]:
         return node(key, { valueBefore: data1[key], valueAfter: data2[key] }, 'updated');
       default:
-        return null;
+        return new Error('Unknown type');
     }
   });
 };
