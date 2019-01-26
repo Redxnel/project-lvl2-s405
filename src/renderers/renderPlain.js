@@ -8,8 +8,8 @@ const setValue = (value) => {
 };
 
 const propertyActions = {
-  added: (obj, path) => `Property '${path}${obj.name}' was added with value: ${setValue(obj.value)}`,
-  updated: (obj, path) => `Property '${path}${obj.name}' was updated. From ${setValue(obj.value.valueBefore)} to ${setValue(obj.value.valueAfter)}`,
+  added: (obj, path) => `Property '${path}${obj.name}' was added with value: ${setValue(obj.valueAfter)}`,
+  updated: (obj, path) => `Property '${path}${obj.name}' was updated. From ${setValue(obj.valueBefore)} to ${setValue(obj.valueAfter)}`,
   removed: (obj, path) => `Property '${path}${obj.name}' was removed`,
   nested: (obj, path, func) => func(obj.children, `${path}${obj.name}.`),
   unchanged: () => [],

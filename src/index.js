@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import parse from './parsers';
-import render from './renderers/index';
+import render from './renderers';
 import buildDiffAST from './buildAST';
 
 export default (path1, path2, format = 'default') => {
