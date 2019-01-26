@@ -1,4 +1,5 @@
 const depthUp = 1;
+const newLine = '\n  ';
 
 const getSpaces = depth => '    '.repeat(depth);
 
@@ -12,12 +13,12 @@ const stringify = (value, depth) => {
 };
 
 const propertyActions = {
-  added: (obj, depth) => `\n  ${getSpaces(depth)}+ ${obj.name}: ${stringify(obj.value, depth + depthUp)}`,
-  updated: (obj, depth) => `\n  ${getSpaces(depth)}+ ${obj.name}: ${stringify(obj.value.valueAfter, depth + depthUp)}`
-    + `\n  ${getSpaces(depth)}- ${obj.name}: ${stringify(obj.value.valueBefore, depth + depthUp)}`,
-  removed: (obj, depth) => `\n  ${getSpaces(depth)}- ${obj.name}: ${stringify(obj.value, depth + depthUp)}`,
-  nested: (obj, depth, render) => `\n  ${getSpaces(depth)}  ${obj.name}: ${render(obj.children, depth + depthUp)}`,
-  unchanged: (obj, depth) => `\n  ${getSpaces(depth)}  ${obj.name}: ${stringify(obj.value, depth + depthUp)}`,
+  added: (obj, depth) => `${newLine}${getSpaces(depth)}+ ${obj.name}: ${stringify(obj.value, depth + depthUp)}`,
+  updated: (obj, depth) => `${newLine}${getSpaces(depth)}+ ${obj.name}: ${stringify(obj.value.valueAfter, depth + depthUp)}`
+    + `${newLine}${getSpaces(depth)}- ${obj.name}: ${stringify(obj.value.valueBefore, depth + depthUp)}`,
+  removed: (obj, depth) => `${newLine}${getSpaces(depth)}- ${obj.name}: ${stringify(obj.value, depth + depthUp)}`,
+  nested: (obj, depth, render) => `${newLine}${getSpaces(depth)}  ${obj.name}: ${render(obj.children, depth + depthUp)}`,
+  unchanged: (obj, depth) => `${newLine}${getSpaces(depth)}  ${obj.name}: ${stringify(obj.value, depth + depthUp)}`,
 };
 
 const render = (ast, depth = 0) => `{${ast
