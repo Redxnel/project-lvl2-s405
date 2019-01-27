@@ -19,6 +19,7 @@ const render = (ast, name = '') => {
   const result = ast.reduce(
     (acc, node) => [...acc, (propertyActions[node.type](node, name, render))], [],
   );
+
   return _.flatten(result).join('\n');
 };
 
