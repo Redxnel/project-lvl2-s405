@@ -1,27 +1,30 @@
+import _ from 'lodash';
+
 const depthUp = 1;
 
 const getSpaces = depth => '    '.repeat(depth);
 
 const stringify = (value, depth) => {
-  if (value instanceof Object) {
-    return `{${Object.keys(value)
-      .map(key => `\n${getSpaces(depth + depthUp)}${key}: ${value[key]}`)
-      .join('')}\n${getSpaces(depth)}}`;
+  if (!_.isObject(value)) {
+    return value;
   }
-  return value;
+  return `{\n${Object.keys(value)
+    .map(key => `${getSpaces(depth + depthUp)}${key}: ${value[key]}`)
+    .join('\n')}\n${getSpaces(depth)}}`;
 };
 
 const propertyActions = {
-  added: (obj, depth) => `\n  ${getSpaces(depth)}+ ${obj.name}: ${stringify(obj.valueAfter, depth + depthUp)}`,
-  updated: (obj, depth) => `\n  ${getSpaces(depth)}+ ${obj.name}: ${stringify(obj.valueAfter, depth + depthUp)}`
-    + `\n  ${getSpaces(depth)}- ${obj.name}: ${stringify(obj.valueBefore, depth + depthUp)}`,
-  removed: (obj, depth) => `\n  ${getSpaces(depth)}- ${obj.name}: ${stringify(obj.valueBefore, depth + depthUp)}`,
-  nested: (obj, depth, render) => `\n  ${getSpaces(depth)}  ${obj.name}: ${render(obj.children, depth + depthUp)}`,
-  unchanged: (obj, depth) => `\n  ${getSpaces(depth)}  ${obj.name}: ${stringify(obj.valueBefore, depth + depthUp)}`,
+  added: (obj, depth) => [`  ${getSpaces(depth)}+ ${obj.name}: ${stringify(obj.valueAfter, depth + depthUp)}`],
+  updated: (obj, depth) => [`  ${getSpaces(depth)}+ ${obj.name}: ${stringify(obj.valueAfter, depth + depthUp)}`,
+    `  ${getSpaces(depth)}- ${obj.name}: ${stringify(obj.valueBefore, depth + depthUp)}`],
+  removed: (obj, depth) => [`  ${getSpaces(depth)}- ${obj.name}: ${stringify(obj.valueBefore, depth + depthUp)}`],
+  nested: (obj, depth, render) => [`  ${getSpaces(depth)}  ${obj.name}: ${render(obj.children, depth + depthUp)}`],
+  unchanged: (obj, depth) => [`  ${getSpaces(depth)}  ${obj.name}: ${stringify(obj.valueBefore, depth + depthUp)}`],
 };
 
-const render = (ast, depth = 0) => `{${ast
-  .map(node => propertyActions[node.type](node, depth, render))
-  .join('')}\n${getSpaces(depth)}}`;
+const render = (ast, depth = 0) => {
+  const result = ast.map(node => propertyActions[node.type](node, depth, render));
+  return `{\n${_.flatten(result).join('\n')}\n${getSpaces(depth)}}`;
+};
 
 export default render;
